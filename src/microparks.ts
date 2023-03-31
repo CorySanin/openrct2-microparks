@@ -162,10 +162,9 @@ function main(): void {
             let outmsg: string, args: any, command = getCommand(msg);
             if (command !== false) {
                 if ((args = doesCommandMatch(command, [CMDRELEASE])) !== false) {
-                    let player: Player;
+                    let player: Player = getPlayer(args);
                     if (args) {
                         if (isPlayerAdmin(player)) {
-                            player = getPlayer(args);
                             let claimNum: number
                             if (args in PLAYERS) {
                                 claimNum = PLAYERS[args];
@@ -184,7 +183,6 @@ function main(): void {
                         }
                     }
                     else {
-                        player = getPlayer(e.player);
                         let claimNum = PLAYERS[player.publicKeyHash];
                         if (typeof claimNum === 'number') {
                             CLAIMS[claimNum] = null;
@@ -206,7 +204,7 @@ function main(): void {
 
 registerPlugin({
     name: 'microparks',
-    version: '0.0.1',
+    version: '0.0.2',
     authors: ['Cory Sanin'],
     type: 'remote',
     licence: 'MIT',
