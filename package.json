@@ -1,0 +1,28 @@
+{
+  "name": "openrct2-microparks",
+  "version": "0.0.1",
+  "description": "Every player gets their own plot of land.",
+  "scripts": {
+    "build": "npm exec tsc",
+    "gettypes": "curl https://raw.githubusercontent.com/OpenRCT2/OpenRCT2/develop/distribution/openrct2.d.ts > types/openrct2.d.ts"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/CorySanin/openrct2-microparks.git"
+  },
+  "keywords": [
+    "openrct2",
+    "plugin",
+    "remote",
+    "multiplayer"
+  ],
+  "author": "Cory Sanin",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/CorySanin/openrct2-microparks/issues"
+  },
+  "homepage": "https://github.com/CorySanin/openrct2-microparks#readme",
+  "devDependencies": {
+    "typescript": "5.0.2"
+  }
+}

@@ -1,0 +1,20 @@
+version: '2'
+
+services:
+   
+   openrct2-release:
+      container_name: openrct2-microparks
+      image: corysanin/openrct2-cli:latest-alpine
+      restart: "no"
+      ports:
+         - 11753:11753
+      expose:
+         - 35711
+      volumes:
+         - ./microparks.park:/usr/microparks.park
+         - ./openrct2:/home/openrct2/.config/OpenRCT2
+         - ./lib:/home/openrct2/.config/OpenRCT2/plugin/microparks
+      command:
+         - "host"
+         - "/usr/microparks.park"
+   
