@@ -162,15 +162,16 @@ function main(): void {
             let outmsg: string, args: any, command = getCommand(msg);
             if (command !== false) {
                 if ((args = doesCommandMatch(command, [CMDRELEASE])) !== false) {
-                    let player: Player = getPlayer(args);
+                    let player: Player = getPlayer(e.player);
                     if (args) {
                         if (isPlayerAdmin(player)) {
-                            let claimNum: number
+                            let target: Player = getPlayer(args);
+                            let claimNum: number;
                             if (args in PLAYERS) {
                                 claimNum = PLAYERS[args];
                             }
-                            else if (player) {
-                                claimNum = PLAYERS[player.publicKeyHash];
+                            else if (target) {
+                                claimNum = PLAYERS[target.publicKeyHash];
                             }
                             if (typeof claimNum === 'number') {
                                 CLAIMS[claimNum] = null;
@@ -180,6 +181,9 @@ function main(): void {
                             else {
                                 outmsg = 'Claim could not be found.';
                             }
+                        }
+                        else {
+                            outmsg = 'Must be admin to release another player\'s claim.'
                         }
                     }
                     else {
@@ -204,7 +208,7 @@ function main(): void {
 
 registerPlugin({
     name: 'microparks',
-    version: '0.0.2',
+    version: '0.0.3',
     authors: ['Cory Sanin'],
     type: 'remote',
     licence: 'MIT',
